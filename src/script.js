@@ -55,14 +55,12 @@ function listMusic(playlist) {
 
       musicTitle.innerText = elem.name;
       artist.innerText = elem.artists[0].name;
-      btnPlay.innerText = "Play";
-      btnRemove.innerText = "X";
       btnPlay.classList.add("btn-play");
-      btnPlay.setAttribute("id", "play");
+      imgPlay.setAttribute("id", "play");
       imgPlay.src = "./img/play.svg";
       imgPlay.alt = "Play";
       btnRemove.classList.add("btn-remove");
-      btnRemove.setAttribute("id", "remove");
+      imgDelete.setAttribute("id", "remove");
       imgDelete.src = "./img/delete.svg";
       imgDelete.alt = "Delete";
 
@@ -79,7 +77,7 @@ const audio = document.querySelector("#player audio");
 
 function playMusic(event) {
   const target = event.target;
-  if (target.tagName === "BUTTON" && target.id === "play") {
+  if (target.tagName === "IMG" && target.id === "play") {
     for (let key in playlist) {
       playlist[key].forEach((elem) => (audio.src = elem.url));
     }
@@ -90,7 +88,8 @@ function playMusic(event) {
 function removeMusic(event) {
   const target = event.target;
   const music = target.closest("li");
-  if (target.tagName === "BUTTON" && target.id === "remove") {
+  if (target.tagName === "IMG" && target.id === "remove") {
+    console.log(target);
     for (let key in playlist) {
       playlist[key].splice(music, 1);
       audio.src = "";

@@ -176,6 +176,7 @@ body {
   width: 80px;
   border: none;
   background: none;
+  cursor: pointer;
 }
 
 #musicList li button img {
