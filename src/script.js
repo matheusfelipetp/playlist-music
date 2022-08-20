@@ -1,5 +1,5 @@
-import kenzieMusic from "./modules/kenzieMusic.js";
-import { Playlist } from "./modules/playlist.js";
+import SearchMusic from "./modules/SearchMusic.js";
+import { Playlist } from "./modules/Playlist.js";
 
 const btnCreate = document.getElementById("btn-create");
 const inputBox = document.querySelector(".input-box");
@@ -27,10 +27,10 @@ const searchButton = document.getElementById("searchButton");
 searchButton.addEventListener("click", async (event) => {
   event.preventDefault();
   const input = document.getElementById("inputMusic");
-  await kenzieMusic.buscaMusica(input.value);
+  await SearchMusic.buscaMusica(input.value);
   input.value = "";
 
-  playlist.addMusic(kenzieMusic.musicaAtual);
+  playlist.addMusic(SearchMusic.musicaAtual);
   listMusic(playlist);
   durationTotal();
 });

@@ -1,6 +1,6 @@
-import { Music } from "./musica.js";
+import { Music } from "./Music.js";
 
-const kenzieMusic = class {
+const SearchMusic = class {
   static musicaAtual = {};
   static async buscaMusica(nomeMusica) {
     if (nomeMusica.trim() === "") {
@@ -26,4 +26,4 @@ const kenzieMusic = class {
   }
 };
 
-export default kenzieMusic;
+export default SearchMusic;
