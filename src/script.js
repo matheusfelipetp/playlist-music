@@ -5,7 +5,7 @@ const btnCreate = document.getElementById("btn-create");
 const inputBox = document.querySelector(".input-box");
 const playerMusic = document.getElementById("player");
 const duration = document.querySelector(".duration");
-const noMusic = document.querySelector("#musicList p");
+const noMusic = document.querySelector(".musicList__title");
 
 btnCreate.addEventListener("click", (event) => {
   event.preventDefault();
@@ -99,6 +99,9 @@ function removeMusic(event) {
       playlist[key].splice(music, 1);
       listMusic(playlist);
       durationTotal();
+    }
+    if (list.innerHTML === "") {
+      noMusic.style.display = "block";
     }
   }
 }
