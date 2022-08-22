@@ -80,6 +80,7 @@ body {
 
 .input-box {
   display: none;
+  gap: 5px;
   width: 400px;
 }
 
@@ -125,7 +126,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 20px;
   margin-bottom: 40px;
   color: var(--secundary);
@@ -233,4 +234,36 @@ body {
 
 #player {
   display: none;
+}
+
+@media (max-width: 600px) {
+  .main__content {
+    width: 400px;
+  }
+  .content__logo h1 {
+    font-size: 3rem;
+  }
+  .content__logo img {
+    height: 80px;
+  }
+  .input-box {
+    flex-direction: column;
+    align-items: center;
+    width: 250px;
+  }
+  .input-box input {
+    width: 250px;
+  }
+  .input-box button {
+    width: 100%;
+  }
+  .musicList__title {
+    font-size: 1.5rem;
+  }
+  #musicList li {
+    width: 320px;
+  }
+  .duration {
+    font-size: 1rem;
+  }
 }

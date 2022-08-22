@@ -15,7 +15,7 @@ btnCreate.addEventListener("click", (event) => {
     inputBox.classList.add("input-show");
     playerMusic.classList.add("input-show");
     duration.classList.add("input-show");
-    inputBox.style.display = "block";
+    inputBox.style.display = "flex";
     playerMusic.style.display = "block";
     duration.style.display = "block";
     btnCreate.style.display = "none";
