@@ -5,6 +5,7 @@ const btnCreate = document.getElementById("btn-create");
 const inputBox = document.querySelector(".input-box");
 const playerMusic = document.getElementById("player");
 const duration = document.querySelector(".duration");
+const noMusic = document.querySelector("#musicList p");
 
 btnCreate.addEventListener("click", (event) => {
   event.preventDefault();
@@ -18,6 +19,7 @@ btnCreate.addEventListener("click", (event) => {
     playerMusic.style.display = "block";
     duration.style.display = "block";
     btnCreate.style.display = "none";
+    noMusic.style.display = "block";
   }, 800);
 });
 
@@ -30,6 +32,8 @@ searchButton.addEventListener("click", async (event) => {
   await SearchMusic.buscaMusica(input.value);
   input.value = "";
 
+  noMusic.style.display = "none";
+  list.style.justifyContent = "flex-start";
   playlist.addMusic(SearchMusic.musicaAtual);
   listMusic(playlist);
   durationTotal();
@@ -48,6 +52,7 @@ function listMusic(playlist) {
       const music = document.createElement("li");
       const musicTitle = document.createElement("h3");
       const artist = document.createElement("p");
+      const time = document.createElement("span");
       const btnPlay = document.createElement("button");
       const imgPlay = document.createElement("img");
       const btnRemove = document.createElement("button");
@@ -55,6 +60,7 @@ function listMusic(playlist) {
 
       musicTitle.innerText = elem.name;
       artist.innerText = elem.artists[0].name;
+      time.innerText = (elem.duration / 1000 / 60).toFixed(2).replace(".", ":");
       btnPlay.classList.add("btn-play");
       imgPlay.setAttribute("id", "play");
       imgPlay.src = "./img/play.svg";
@@ -66,7 +72,7 @@ function listMusic(playlist) {
 
       btnPlay.appendChild(imgPlay);
       btnRemove.appendChild(imgDelete);
-      music.append(musicTitle, artist, btnPlay, btnRemove);
+      music.append(musicTitle, artist, time, btnPlay, btnRemove);
       list.appendChild(music);
     });
   }
@@ -89,10 +95,8 @@ function removeMusic(event) {
   const target = event.target;
   const music = target.closest("li");
   if (target.tagName === "IMG" && target.id === "remove") {
-    console.log(target);
     for (let key in playlist) {
       playlist[key].splice(music, 1);
-      audio.src = "";
       listMusic(playlist);
       durationTotal();
     }
